@@ -7,22 +7,16 @@ const TeachableMachine = () => {
   const labelContainerRef = useRef(null);
 
   const URL = 'https://teachablemachine.withgoogle.com/models/-TBuP1naF/';
-  let model, webcam, maxPredictions;
+  let model, webcam;
   let isIos = false;
 
-  if (
-    window.navigator.userAgent.indexOf('iPhone') > -1 ||
-    window.navigator.userAgent.indexOf('iPad') > -1
-  ) {
-    isIos = true;
-  }
+  if (window.navigator.userAgent.indexOf('iPhone') > -1 ||window.navigator.userAgent.indexOf('iPad') > -1) {isIos = true;}
 
   const init = useCallback(async () => {
     const modelURL = URL + 'model.json';
     const metadataURL = URL + 'metadata.json';
 
     model = await tmImage.load(modelURL, metadataURL);
-    maxPredictions = model.getTotalClasses();
 
     const flip = true;
     const width = 200;
@@ -41,9 +35,7 @@ const TeachableMachine = () => {
       webcamRef.current.appendChild(webcam.canvas);
     }
 
-    for (let i = 0; i < maxPredictions; i++) {
-      labelContainerRef.current.appendChild(document.createElement('div'));
-    }
+    labelContainerRef.current.appendChild(document.createElement('div'));
     webcam.play();
     window.requestAnimationFrame(loop);
   }, []);
@@ -61,12 +53,11 @@ const TeachableMachine = () => {
     } else {
       prediction = await model.predict(webcam.canvas);
     }
-    for (let i = 0; i < maxPredictions; i++) {
-      const classPrediction =
-        prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-      labelContainerRef.current.childNodes[i].innerHTML = classPrediction;
-    }
+  
+    const higherClassIndex = prediction[0].probability > prediction[1].probability ? 0 : 1;  
+    labelContainerRef.current.childNodes[0].innerHTML = prediction[higherClassIndex].className;
   }, []);
+  
 
   useEffect(() => {
     init();
