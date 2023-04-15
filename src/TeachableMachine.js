@@ -1,4 +1,3 @@
-// TeachableMachine.js
 import React, { useEffect, useRef, useCallback } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as tmImage from '@teachablemachine/image';
@@ -81,7 +80,7 @@ const TeachableMachine = () => {
 
   return (
     <div>
-      <div>Teachable Machine Image Model</div>
+      <div>Drowsiness Detection</div>
       <div ref={webcamRef}></div>
       <div ref={labelContainerRef}></div>
     </div>
