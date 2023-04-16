@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/drowsy-web/static/css/main.073c9b0a.css",
+    "main.js": "/drowsy-web/static/js/main.05837ede.js",
+    "static/js/787.9021b3c2.chunk.js": "/drowsy-web/static/js/787.9021b3c2.chunk.js",
+    "index.html": "/drowsy-web/index.html",
+    "main.073c9b0a.css.map": "/drowsy-web/static/css/main.073c9b0a.css.map",
+    "main.05837ede.js.map": "/drowsy-web/static/js/main.05837ede.js.map",
+    "787.9021b3c2.chunk.js.map": "/drowsy-web/static/js/787.9021b3c2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.05837ede.js"
+  ]
+}
